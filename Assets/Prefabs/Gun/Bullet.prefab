@@ -4935,3 +4935,4 @@ MonoBehaviour:
   go_RicocheEffect: {fileID: 336737285451330491, guid: c10dc78fcb79443408bfc7901e222320,
     type: 3}
   damage: 1
+  sound_Ricochet: NormalGun_Ricochet

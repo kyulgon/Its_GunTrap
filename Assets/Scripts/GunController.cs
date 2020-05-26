@@ -48,6 +48,9 @@ public class GunController : MonoBehaviour
     void Fire()
     {
         Debug.Log("총알 발사");
+        currentGun.animator.SetTrigger("GunFire");
+        SoundManager.instance.PlaySoundEffect(currentGun.sound_Fire);
+
         currentGun.ps_MuzzleFlash.Play();
 
         var clone = Instantiate(currentGun.go_Bullet_Prefab, currentGun.ps_MuzzleFlash.transform.position, Quaternion.identity);

@@ -10,10 +10,22 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody myRigid;
 
+    public bool IsJet { get; private set; } // 속성이라 부르며, 변수의 참조와 수정을 따로 관리 가능
+
+    [Header("파티클 시스템(부스터)")]
+    [SerializeField] ParticleSystem ps_LeftEngin;
+    [SerializeField] ParticleSystem ps_RightEngin;
+
+    private AudioSource audioSource;
+
+    JetEngineFuelManager theFuel;
 
     void Start()
     {
+        IsJet = false; // 초기 값
         myRigid = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
+        theFuel = FindObjectOfType<JetEngineFuelManager>();
     }
 
     
@@ -35,12 +47,29 @@ public class PlayerController : MonoBehaviour
 
     void TryJet()
     {
-        if(Input.GetKey(KeyCode.Space))
+        if(Input.GetKey(KeyCode.Space) && theFuel.IsFuel)
         {
+            if(!IsJet)
+            {
+                ps_LeftEngin.Play();
+                ps_RightEngin.Play();
+                audioSource.Play();
+                IsJet = true;
+            }
+           
+
             myRigid.AddForce(Vector3.up * jetPackSpeed);
         }
         else
         {
+            if (IsJet)
+            {
+                ps_LeftEngin.Stop();
+                ps_RightEngin.Stop();
+                audioSource.Stop();
+                IsJet = false;
+            }
+
             myRigid.AddForce(Vector3.down * jetPackSpeed);
         }
     }
