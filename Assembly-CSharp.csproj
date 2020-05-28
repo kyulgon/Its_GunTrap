@@ -70,8 +70,11 @@
     <Compile Include="Assets\Scripts\GunController.cs" />
     <Compile Include="Assets\Scripts\JetEngineFuelManager.cs" />
     <Compile Include="Assets\Scripts\JetPackController.cs" />
+    <Compile Include="Assets\Scripts\Mine.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\SoundManager.cs" />
+    <Compile Include="Assets\Scripts\Spike.cs" />
+    <Compile Include="Assets\Scripts\StatusManager.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>F:/GitHub_portfolio/Its_GunTrap/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

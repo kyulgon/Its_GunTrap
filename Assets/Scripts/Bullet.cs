@@ -19,6 +19,11 @@ public class Bullet : MonoBehaviour
         SoundManager.instance.PlaySoundEffect(sound_Ricochet);
         var clone = Instantiate(go_RicocheEffect, contactPoint.point, Quaternion.LookRotation(contactPoint.normal));
 
+        if(other.transform.CompareTag("Mine"))
+        {
+            other.transform.GetComponent<Mine>().Damaged(damage);
+        }
+
         Destroy(clone, 0.5f);
         Destroy(gameObject);
     }
