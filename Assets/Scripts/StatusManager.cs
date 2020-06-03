@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class StatusManager : MonoBehaviour
@@ -83,6 +84,6 @@ public class StatusManager : MonoBehaviour
 
     private void PlayerDead()
     {
-        Debug.Log("플레이어가 죽었습니다.");
+        SceneManager.LoadScene("Title");
     }
 }

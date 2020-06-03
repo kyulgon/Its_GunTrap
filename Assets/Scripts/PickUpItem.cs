@@ -22,17 +22,26 @@ public class PickUpItem : MonoBehaviour
         {
             Item item = other.GetComponent<Item>();
 
+            int extra = 0;
+
+
             if(item.itemType == ItemType.Score)
             {
                 SoundManager.instance.PlaySoundEffect("Score");
-                ScoreManager.extraScore += item.extraScore;
+                extra = item.extraScore;
+                ScoreManager.extraScore += extra;
             }
             else if(item.itemType == ItemType.NormalGun_Bullet)
             {
                 SoundManager.instance.PlaySoundEffect("Bullet");
-                guns[NORMAL_GUN].bulletCount += item.extraBullet;
+                extra = item.extraBullet;
+                guns[NORMAL_GUN].bulletCount += extra;
                 theGc.BulletUiSetting();
             }
+
+            string message = "+" + extra;
+
+            FloatingTextManager.instance.CreateFloatingText(other.transform.position, message);
 
             Destroy(other.gameObject);
         }
