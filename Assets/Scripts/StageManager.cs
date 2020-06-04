@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class StageManager : MonoBehaviour
 {
@@ -39,6 +40,11 @@ public class StageManager : MonoBehaviour
         {
             Debug.Log("모든 스테이지를 클리어 함.");
         }
+    }
+
+    public void EixtBtn()
+    {
+        SceneManager.LoadScene("Title");
     }
 
 }
